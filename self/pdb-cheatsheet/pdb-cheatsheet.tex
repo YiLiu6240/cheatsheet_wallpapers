@@ -1,0 +1,135 @@
+%about: A cheatsheet for Python Debugger
+%author: Florian Preinstorfer <nblock@archlinux.org>
+%url: https://github.com/nblock/pdb-cheatsheet
+%license: creative commons by-nc-sa
+%credits:
+%  - Christoph Hermes (patches)
+%  - LaTeX template based on https://github.com/mtdavidson/emacs-cheatsheet
+%  - http://docs.python.org/library/pdb.html
+%  - https://anilattech.wordpress.com/2011/06/29/python-debugger-pdb-cheatsheet
+%  - https://pythonconquerstheuniverse.wordpress.com/2009/09/10/debugging-in-python
+%  - http://www.doughellmann.com/PyMOTW/pdb/
+\documentclass[10pt,landscape,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{eqlist}
+\usepackage[pdftex,hidelinks]{hyperref}
+\usepackage{nopageno}
+\usepackage[cm]{fullpage}
+\usepackage{multicol}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{graphicx}
+
+\usepackage{pagecolor}
+\definecolor{color_bg}{HTML}{282828}
+\definecolor{color_fg}{HTML}{ebdbb2}
+\definecolor{color_title}{HTML}{458588}
+\definecolor{color_section}{HTML}{cc241d}
+\definecolor{color_subsection}{HTML}{98971a}
+
+\pagecolor{color_bg}
+\color{color_fg}
+
+\usepackage{titlesec}
+\titleformat{\section}
+{\color{color_section}\normalfont\large\bfseries}
+{\color{color_section}\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{color_subsection}\normalfont\normalsize\bfseries}
+{\color{color_subsection}\thesection}{1em}{}
+
+%custom commands and config
+\newcommand{\theauthor}{Florian Preinstorfer (\href{mailto:nblock@archlinux.us}{nblock@archlinux.us})}
+\newcommand{\theversion}{1.1}
+\newcommand{\keystroke}[1]{$<$#1$>$}
+\parindent=0cm
+\parskip=1mm
+\def\eqlistlabel#1{\bfseries#1}
+\setcounter{secnumdepth}{-1}
+\hypersetup{
+  pdftitle={Python Debugger Cheatsheet},
+  pdfauthor={\theauthor},
+  pdfkeywords={Python, Debugger, Cheatsheet, pdb, ipdb},
+  pdfstartview={FitH}
+}
+
+\begin{document}
+  \begin{center}
+    \begin{minipage}[c]{0.15\textwidth}
+      \includegraphics[width=3cm]{python-logo}
+    \end{minipage}
+    \begin{minipage}[c]{0.43\textwidth}
+      \huge \bfseries Python Debugger Cheatsheet
+    \end{minipage}
+    \begin{minipage}[r]{0.15\textwidth}
+      \includegraphics[width=3cm]{python-logo}
+    \end{minipage}
+    \vspace{1cm}
+  \end{center}
+
+  \begin{multicols}{2}
+    \subsection{Getting started}
+      \begin{eqlist}
+        \item[{\bfseries import pdb;pdb.set\_trace()}] start pdb from within a script
+        \item[{\bfseries python -m pdb \keystroke{file.py}}] start pdb from the commandline
+      \end{eqlist}
+
+    \subsection{Basics}
+      \begin{eqlist}
+        \item[h(elp)] print available commands
+        \item[h(elp) \textit{command}] print help about \textit{command}
+        \item[q(quit)] quit debugger
+      \end{eqlist}
+
+    \subsection{Examine}
+      \begin{eqlist}
+        \item[p(rint) \textit{expr}] print the value of \textit{expr}
+        \item[pp \textit{expr}] pretty-print the value of \textit{expr}
+        \item[w(here)] print current position (including stack trace)
+        \item[l(ist)] list 11 lines of code around the current line
+        \item[l(ist) \textit{first}, \textit{last}] list from \textit{first} to \textit{last} line number
+        \item[a(rgs)] print the args of the current function
+      \end{eqlist}
+
+    \subsection{Miscellaneous}
+      \begin{eqlist}
+        \item[!\textit{stmt}] treat \textit{stmt} as a Python statement instead of a pdb command
+        \item[alias \textit{map} \textit{stmt}] map Python statement as a map command
+        \item[alias \textit{map} <\textit{arg1} \ldots> \textit{stmt}] pass arguments to Python statement. \\
+            \textit{stmt} includes \%1, \%2, \ldots literals.
+      \end{eqlist}
+      Save pdb commands to local \keystroke{./.pdbrc} file for repetitive access.
+
+    \subsection{Movement}
+      \begin{eqlist}
+        \item[\keystroke{ENTER}] repeat the last command
+        \item[n(ext)] execute the current statement (step over)
+        \item[s(tep)] execute and step into function
+        \item[r(eturn)] continue execution until the current function returns
+        \item[c(ontinue)] continue execution until a breakpoint is encountered
+        \item[u(p)] move one level up in the stack trace
+        \item[d(own)] move one level down in the stack trace
+      \end{eqlist}
+
+    \subsection{Breakpoints}
+      \begin{eqlist}
+        \item[b(reak)] show all breakpoints with its \textit{number}
+        \item[b(reak) \textit{lineno}] set a breakpoint at \textit{lineno}
+        \item[b(reak) \textit{lineno}, \textit{cond}] stop at breakpoint \textit{lineno} if Python condition \textit{cond} holds, e.g.\ i==42
+        \item[b(reak) \textit{file}:\textit{lineno}] set a breakpoint in \textit{file} at \textit{lineno}
+        \item[b(reak) \textit{func}] set a breakpoint at the first line of a \textit{func}
+        \item[tbreak \textit{lineno}] set a temporary breakpoint at \textit{lineno}, i.e.\ is removed when first hit
+        \item[disable \textit{number}] disable breakpoint \textit{number}
+        \item[enable \textit{number}] enable breakpoint \textit{number}
+        \item[clear \textit{number}] delete breakpoint \textit{number}
+      \end{eqlist}
+
+    \small{
+    \hrule
+    Author: \theauthor~--- version \theversion~--- license \href{https://creativecommons.org/licenses/by-nc-sa/3.0}{cc-by-nc-sa 3.0}\\
+    See \url{https://github.com/nblock/pdb-cheatsheet} for more information.
+    }
+  \end{multicols}
+\end{document}
