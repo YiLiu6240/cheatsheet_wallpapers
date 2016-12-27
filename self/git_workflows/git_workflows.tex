@@ -1,0 +1,201 @@
+\documentclass[12pt,landscape]{article}
+
+\input{../preamble/preamble}
+
+\pagecolor{base16_grey01}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+  \includegraphics{./resources/logo@2x} \\
+  {\color{solarized_blue} \Large{\textbf{git cheatsheet - workflows}}} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BEGIN CHEATSHEET
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{create}
+
+Clone an existing repo \\
+\codeline[solarized_green]{git clone ssh://user@domain.com/repo.git} \\
+
+create a new local repo \\
+\codeline{ git init} \\
+
+\section{local changes}
+
+changed files in your working directory \\
+\codeline{git status} \\
+
+changes to tracked files \\
+\codeline{git diff} \\
+
+add all current changes to the next commit \\
+\codeline{git add .} \\
+
+add some changes in \(<file>\) to the next commit \\
+\codeline{git add -p \(<file>\)} \\
+
+commit all local changes in tracked files \\
+\codeline{git commit -a} \\
+
+commit previously staged changes \\
+\codeline{git commit} \\
+
+change the last commit \\
+\comment{don't amend published commits!} \\
+\codeline{git commit --ammend} \\
+
+\section{refactor filenames}
+
+deletes the file form working directory and stages the deletion \\
+\codeline[solarized_violet]{git rm \(<file>\)} \\
+
+removes the file from version control but preserves the file locally \\
+\codeline{git rm --cached \(<file>\)} \\
+
+\textcolor{solarized_red}{rename \(<file>\)} \\
+\codeline[solarized_violet]{git mv \(<file-original>\) \(<file-renamed>\)}
+
+\section{commit history}
+
+show all commits, starting with newest \\
+\codeline{git log} \\
+
+show latest \(<n>\) commits, with details \\
+\codeline{git log -\(<n>\) -p} \\
+
+show changes over time for a specific file\\
+\codeline{git log -p}
+
+who changed what and when in \(<file>\) \\
+\codeline{git blame} \\
+
+\section{branches \& tags}
+
+list all existing branches \\
+\codeline{git branch -av} \\
+
+switch HEAD branch \\
+\codeline{git checkout \(<branch>\)} \\
+
+create a new branch based on your current HEAD \\
+\codeline{git branch \(<new-branch>\)} \\
+\comment{or} \\
+\codeline{git checkout -b \(<new-branch>\)} \comment{create and switch}\\
+
+create a new tracking branch based on a remote branch \\
+\codeline{git checkout --track \(<remote/branch>\)} \\
+
+delete a local branch \\
+\codeline{git branch -d \(<branch>\)} \\
+
+mark the current commit with a tag \\
+\codeline{git tag \(<tag-name>\)} \\
+
+\section{update \& publish}
+
+list all currently configured remotes \\
+\codeline{git remote -v} \\
+
+show information about a remote \\
+\codeline{git remote show \(<remote>\)} \\
+
+add new remote rep, as \(<remote>\) \\
+\codeline{git remote add \(<remote>\) \(<url>\)} \\
+
+download all changes from \(<remote>\), \\
+\textcolor{solarized_green}{but don't integrate into HEAD} \\
+\codeline{git fetch \(<remote>\)} \\
+
+download changes and \\
+\textcolor{solarized_green}{directly merge/integrate into HEAD} \\
+\codeline{git pull \(<remote>\) \(<branch>\)} \\
+
+publish local changes on a remote \\
+\codeline{git push \(<remote>\) \(<branch>\)} \\
+
+delete a branch on the remote \\
+\codeline{git branch -dr \(<remote/branch>\)} \\
+
+publish your tags \\
+\codeline{git push --tags} \\
+
+\section{merge \& rebase}
+
+mege \(<branch>\) into your current HEAD \\
+\codeline{git merge \(<branch>\)} \\
+
+rebase your current HEAD onto \(<branch>\) \\
+\comment{don't rebase published commits!} \\
+\codeline{git rebase \(<branch>\)} \\
+
+abort a rebase \\
+\codeline{git rebase --abort} \\
+
+continue a rebase after resolving conflicts \\
+\codeline{git rebase --continue} \\
+
+use your configured merge tool to solve conflicts \\
+\codeline{git mergetool} \\
+
+use your editor to manually solve conflicts \\
+and (after resolving) mark file as resolved \\
+\codeline{git add \(<resolved-file>\)} \\
+\codeline{git rm \(<resolved-file>\)} \\
+
+\section{undo}
+
+discard all local changes in your working directory \\
+\codeline{git reset --hard HEAD} \\
+
+discard local changes in a specific file \\
+\codeline{git checkout HEAD \(<file>\)} \\
+
+revert a commit (by producing a new commit \\
+with contrary changes) \\
+\codeline{git revert \(<commit>\)} \\
+
+reset your HEAD pointer to a previous commit ...\\
+
+\textcolor{solarized_green}{... and discard all changes since then} \\
+\codeline{git reset --hard \(<commit>\)} \\
+
+\textcolor{solarized_green}{... and preserve all changes as unstaged changes} \\
+\codeline{git reset \(<commit>\)} \\
+
+\textcolor{solarized_green}{... and preserve uncommited local changes} \\
+\codeline{git reset --keep \(<commit>\)} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ATTRIBUTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\scriptsize
+\textcolor{solarized_base01}{
+  Compiled by Yi Liu (\url{http://YiLiu6240.github.io}). \\
+  source: \\
+  https://www.git-tower.com/blog/git-cheat-sheet/ \\
+  \begin{center}
+    Last Updated \today
+  \end{center}
+}
+\end{multicols*}
+\end{document}

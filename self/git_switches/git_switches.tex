@@ -1,0 +1,184 @@
+\documentclass[12pt,landscape]{article}
+
+\input{../preamble/preamble}
+
+\pagecolor{base16_grey01}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+  {\color{solarized_blue} \Large{\textbf{git cheatsheet - workflows}}} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BEGIN CHEATSHEET
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{entering and existing dired}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{C-x d}    & run dired \\
+  \codebf{C-x C-j} & dired the dir of current file \\
+  \codebf{h} & help \\
+  \codebf{q} & quit dired back to file \\
+\end{tabular}
+
+\section{motion commands}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{p/n}    & move up/down to prev/next line \\
+  \codebf{\textless/\textgreater} & move up/down to prev/next dir line \\  % symbol hack for < and >
+  \codebf{M-\{/\}} & move to prev/next marked file \\
+  \codebf{M-C - p/n} &  move up/down to prev/next sub-dir \\
+  \codebf{\^} & move to parent dir \\
+  \codebf{M-C-d} & move to first child sub-dir \\
+\end{tabular}
+
+\section{mouse commands}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{MB\_2}    & visit file \\
+  \codebf{C-MB\_3} & popup menu \\
+\end{tabular}
+
+\section{Immediate actions on files}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{f} & visit current file \\
+  \codebf{v} & view current file \\
+  \codebf{o} & visit current file in other window \\
+  \codebf{C-u o} & display current file \\
+  \codebf{+} & create a new sub-dir \\
+  \codebf{-} & compare file at point with the one at mark \\
+\end{tabular}
+
+\section{Marking files}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{m/u} & mark/unmark \\
+  \codebf{M-delete} & unmark all marked files in a buffer \\
+  \codebf{* .} & mark files with a given extensions \\
+  \codebf{* /} & mark all dirs \\
+  \codebf{* @} & mark all symlinks \\
+  \codebf{* *} & mark all executables \\
+  \codebf{* t} & invert marking \\
+  \codebf{* s} & mark all files in the current subdir \\
+  \codebf{* \%} & mark file names matching a regex \\
+  \codebf{* c} & change the marks to a different character \\
+\end{tabular}
+
+\section{File commands}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{C} & copy file (s) \\
+  \codebf{R} & rename a file or move to another dir \\
+  \codebf{O} & change ownership \\
+  \codebf{G} & change group \\
+  \codebf{M} & change mode \\
+  \codebf{P} & print \\
+  \codebf{\% l} & convert file names to lower case \\
+  \codebf{\% u} & convert file names to upper case \\
+  \codebf{X} & delete marked files \\
+  \codebf{S} & make symlinks \\
+  \codebf{Y} & make relative symlinks \\
+  \codebf{H} & make hard links \\
+  \codebf{A} & search files for a regex \\
+  \codebf{Q} & query replace regex \\
+  \codebf{B} & byte-compile files \\
+  \codebf{L} & load files \\
+  \codebf{!} & shell command on files \\
+\end{tabular}
+
+\section{Flagging files for deletion}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{d} & flag file for deletion \\
+  \codebf{delete} & backup and remove deletion flag \\
+\end{tabular}
+
+\section{Modifying the dired buffer}
+% \smallskip \hrule height 2pt \smallskip
+
+\begin{tabular}{ll}
+  \codebf{i} & insert a sub-dir into this buffer \\
+  \codebf{k} & remove marked files from the listing \\
+  \codebf{C-u k} & remove a subdir listing \\
+  \codebf{g} & re-read all dirs \\
+  \codebf{s} & toggle sorting of current subdir by name/date \\
+  \codebf{C-u s} & edit ls switches \\
+  \codebf{C-\_} & recover marks, hidden lines, and such \\
+  \codebf{M-\$} & hide all subdirs \\
+  \codebf{\$} & toggle hiding subdirs \\
+\end{tabular}
+
+\vfill
+\columnbreak
+
+\section{Vinegar (spacemacs)}
+% \smallskip \hrule height 2pt \smallskip
+
+\subsection{Mouse}
+
+\begin{tabular}{ll}
+  \codebf{mouse-1} & open selected file \\
+  \codebf{mouse-2} & open clicked file in other-window \\
+  \codebf{mouse-3} & open context popup or go up dir \\
+\end{tabular}
+
+\subsection{Key bindings}
+
+\begin{tabular}{ll}
+  \codebf{-} & (file) navigate to parent directory in dired \\
+  \codebf{0} & move to the beginning of the file in dired \\
+  \codebf{=} & diff between selected files \\
+  \codebf{C-j/k} & move to next subdirectory \\
+  \codebf{I} & toggle showing dotfiles \\
+  \codebf{~~~} & navigate to home dir \\
+  \codebf{f} & helm find file \\
+  \codebf{J} & goto file \\
+  \codebf{C-f} & dired-find \\
+  \codebf{H} & show dired history \\
+  \codebf{T} & move down in dired tree \\
+  \codebf{K} & kill marked lines (hide, not delete) \\
+  \codebf{r} & redisplay buffer \\
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ATTRIBUTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\scriptsize
+
+Compiled by Yi Liu (\url{http://YiLiu6240.github.io}). \\
+source: \\
+https://www.gnu.org/software/emacs/refcards/pdf/dired-ref.pdf \\
+https://github.com/syl20bnr/spacemacs/tree/master/layers/\%2Bvim/vinegar \\
+\begin{center}
+    Last Updated \today
+\end{center}
+
+\end{multicols*}
+\end{document}

@@ -1,0 +1,142 @@
+\documentclass[12pt,landscape]{article}
+
+\input{../preamble/preamble}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    \includegraphics{./resources/aw_64_shadow} \\
+    {\color{solarized_blue} \Large{\textbf{Awesomewm cheatsheet}}} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BEGIN CHEATSHEET
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Defs}
+% \smallskip \hrule height 2pt \smallskip
+\hrule height 2pt
+
+\begin{tabular}{ll}
+  \codebf{mod4}    & win key \\
+  \codebf{button1} & mouse-Left \\
+  \codebf{button2} & mouse-Middle (scroll-wheel click) \\
+  \codebf{button3} & mouse-Right \\
+  \codebf{button4} & scroll-wheel up \\
+  \codebf{button5} & scroll-wheel down \\
+\end{tabular}
+
+\section{Window Manager Control}
+\hrule height 2pt
+
+\begin{tabular}{ll}
+  \codebf{mod4 + control + r} & restart awesome \\
+  \codebf{mod4 + shift + q} & quit awesome \\
+  \codebf{mod4 + r} & run prompt \\
+  \codebf{mod4 + x} & run Lua code prompt \\
+  \codebf{mod4 + return} & spawn terminal \\
+  \codebf{mod4 + w} & open main menu \\
+\end{tabular}
+
+\section{Clients}
+\hrule height 2pt
+
+\begin{tabular}{ll}
+  \codebf{mod4 + m} & maximize client \\
+  \codebf{mod4 + n} & minimize client \\
+  \codebf{mod4 + control} & restore client \\
+  \codebf{mod4 + f} & set client fullscreen \\
+  \codebf{mod4 + shift + c} & kill focused client \\
+  \codebf{mod4 + t} & set client on top \\
+\end{tabular}
+
+\vfill
+\columnbreak
+
+\section{Navigation} \smallskip \hrule height 2pt \smallskip
+
+\subsection{Mouse}
+
+\begin{tabular}{ll}
+  \codebf{button1 on tag name} & view tag \\
+  \codebf{button4/5 on tag name} & switch to prev/next tag \\
+  \codebf{button4/5 on root window} & switch to prev/next tag \\
+  \codebf{button1/3/4/5 on layout symbol} & switch to prev/next layout \\
+\end{tabular}
+
+\subsection{Keyboard}
+
+\begin{tabular}{ll}
+  \codebf{mod4 + j/k} & focus next/prev client \\
+  \codebf{mod4 + u} & focus first urgent client \\
+  \altcodebf{mod4 + h/l} & view prev/next tag \\
+  \codebf{mod4 + 1-9} & switch to tag 1-9 \\
+  \codebf[solarized_red]{mod4 + control + j/k} & focus next/prev screen \\
+  \codebf{mod4 + escape} & focus previously selected tag set \\
+\end{tabular}
+
+% \vfill
+% \columnbreak
+
+\section{Layout Modification} \smallskip \hrule height 2pt \smallskip
+
+\subsection{Mouse}
+
+\begin{tabular}{ll}
+  \codebf{mod4 + button1 on tag name} & tag current client with this tag only \\
+  \codebf{mod4 + botton3 on tag name} & toggle this tag for client \\
+  \codebf{button3 on tag name} & add this tag to current view \\
+  \codebf{mod4 + button1 on client window} & move window \\
+  \codebf{mod4 + button3  on client window} & resize window \\
+\end{tabular}
+
+\subsection{Keyboard}
+
+\begin{tabular}{ll}
+  \codebf{mod4 + shift + j/k} & switch client with next/prev client \\
+  \codebf{mod4 + o} & send client to next screen \\
+  \altcodebf{mod4 + left/right} & -/+ master width factor by 5\% \\
+  \altcodebf{mod4 + shift + left/right} & -/+ number of master windows by 1 \\
+  \altcodebf{mod4 + control + left/right} & -/+ number of columns for non-master windows by 1 \\
+  \codebf{mod4 + space} & switch to next layout \\
+  \codebf{mod4 + shift + space} & switch to prev layout \\
+  \codebf{mod4 + contol + space} & toggle lcient floating status \\
+  \codebf{mod4 + control + return} & swap focused client with master \\
+  \codebf{mod4 + control + 1-9} & toggle tag view \\
+  \codebf{mod4 + shift + 1-9} & tag client with tag \\
+  \codebf{mod4 + shift + control + 1-9} & toggle tag on client \\
+\end{tabular}
+
+\vfill
+\columnbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ATTRIBUTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\scriptsize
+
+Compiled by Yi Liu (\url{http://YiLiu6240.github.io}). \\
+source:
+https://www.cheatography.com/fievel/cheat-sheets/awesome-window-manager-3-x/ \\
+\begin{center}
+    Last Updated \today
+\end{center}
+
+\end{multicols*}
+\end{document}

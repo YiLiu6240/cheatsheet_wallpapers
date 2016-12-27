@@ -1,0 +1,113 @@
+\usepackage{geometry}
+\geometry{  % use 16:10 ratio, based on A4 dims, short edge is 210mm
+  landscape,
+  paperwidth=336mm,
+  paperheight=210mm,
+  top=.4in,left=.2in,right=.2in,bottom=.4in
+}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{latexsym, marvosym}
+\usepackage{pifont}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[bottom]{footmisc}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{pdfpages}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\setlist[description]{leftmargin=0pt}
+\usepackage{xfrac}
+\usepackage[open,
+            openlevel=2
+            ]{bookmark}
+\usepackage{relsize}
+\usepackage{rotating}
+
+ \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+    \def\independenT#1#2{\mathrel{\setbox0\hbox{$#1#2$}%
+    \copy0\kern-\wd0\mkern4mu\box0}}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\newcommand{\codebf}[2][solarized_yellow]{\textcolor{#1}{\textbf{#2}}}
+\newcommand{\altcodebf}[1]{\codebf[solarized_green]{#1}}
+\newcommand{\codeline}[2][solarized_yellow]{\codebf[#1]{\$ #2}}
+\newcommand{\comment}[2][solarized_base01]{%
+  \textcolor{#1}{\scriptsize{\textit{#2}}}}
+\makeatother
+
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% -----------------------------------------------------------------------
+\usepackage{pagecolor}
+% solarized color palette
+\definecolor{solarized_base03}{HTML}{002B36}
+\definecolor{solarized_base02}{HTML}{073642}
+\definecolor{solarized_base01}{HTML}{586E75}
+\definecolor{solarized_base0}{HTML}{839496}
+\definecolor{solarized_base1}{HTML}{93A1A1}
+\definecolor{solarized_base3}{HTML}{FDF6E3}
+\definecolor{solarized_yellow}{HTML}{B58900}
+\definecolor{solarized_orange}{HTML}{CB4B16}
+\definecolor{solarized_red}{HTML}{DC322F}
+\definecolor{solarized_magenta}{HTML}{D33682}
+\definecolor{solarized_violet}{HTML}{6C71C4}
+\definecolor{solarized_blue}{HTML}{268BD2}
+\definecolor{solarized_cyan}{HTML}{2AA198}
+\definecolor{solarized_green}{HTML}{859900}
+
+% base16 color palette
+\definecolor{base16_grey00}{HTML}{181818}
+\definecolor{base16_grey01}{HTML}{282828}
+\definecolor{base16_grey02}{HTML}{383838}
+\definecolor{base16_grey03}{HTML}{585858}
+\definecolor{base16_white00}{HTML}{B8B8B8}
+\definecolor{base16_white01}{HTML}{D8D8D8}
+\definecolor{base16_white02}{HTML}{E8E8E8}
+\definecolor{base16_white03}{HTML}{F8F8F8}
+\definecolor{base16_red}{HTML}{AB4642}
+\definecolor{base16_orange}{HTML}{DC9656}
+\definecolor{base16_yellow}{HTML}{F7CA88}
+\definecolor{base16_green}{HTML}{A1B56C}
+\definecolor{base16_cyan}{HTML}{86C1B9}
+\definecolor{base16_blue}{HTML}{7CAFC2}
+\definecolor{base16_purple}{HTML}{BA8BAF}
+\definecolor{base16_brown}{HTML}{A16946}
+
+% default bg and fg color
+\pagecolor{solarized_base03}
+\color{solarized_base1}
+% -----------------------------------------------------------------------
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\color{solarized_orange}\normalfont\large\bfseries}
+{\color{solarized_orange}\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{solarized_cyan}\normalfont\normalsize\bfseries}
+{\color{solarized_cyan}\thesection}{1em}{}
