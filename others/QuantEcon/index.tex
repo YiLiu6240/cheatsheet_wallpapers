@@ -7,6 +7,8 @@
   top=.4in,left=.2in,right=.2in,bottom=.4in
 }
 \usepackage{multicol}
+\raggedcolumns     % prevent auto alignment
+\interlinepenalty=10000
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -100,7 +102,7 @@
 \date{}
 
 \begin{document}
-\begin{multicols*}{2}
+\begin{multicols}{2}
 % \maketitle
 
 \section{Creating Vectors}\label{creating-vectors}
@@ -1599,5 +1601,5 @@ Function: multiple lines\strut
 In the Python code we assume that you have already run
 \texttt{import\ numpy\ as\ np}
 
-\end{multicols*}
+\end{multicols}
 \end{document}
