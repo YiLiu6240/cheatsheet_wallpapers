@@ -1,0 +1,1237 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdftitle={Comparison cheatsheet},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{listings}
+\usepackage{longtable,booktabs}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\title{Comparison cheatsheet}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Creating Vectors}\label{creating-vectors}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.21\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.29\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Row vector: size (1, n)\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = [1 2 3]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.array([1, 2, 3]).reshape(1,3)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = [1 2 3]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Column vector: size (n, 1)\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = [1; 2; 3]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.array([1, 2, 3]).reshape(3,1)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = [1 2 3]'
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+1d array: size (n, )\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Not possible\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.array([1, 2, 3])
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = [1; 2; 3]
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+A = [1, 2, 3]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Integers from j to n with step size k\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = j:k:n
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.arange(j, n+1, k)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = j:k:n
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Linearly spaced vector of k points\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = linspace(1, 5, k)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.linspace(1, 5, k)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = linspace(1, 5, k)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Creating Matrices}\label{creating-matrices}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Create a matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = [1 2; 3 4]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.array([[1, 2], [3, 4]])
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = [1 2; 3 4]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+2 x 2 matrix of zeros\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = zeros(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.zeros((2, 2))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = zeros(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+2 x 2 matrix of ones\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = ones(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.ones((2, 2))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = ones(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+2 x 2 identity matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = eye(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.eye(2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = eye(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Diagonal matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = diag([1 2 3])
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.diag([1, 2, 3])
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = diagm([1; 2; 3])
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Uniform random numbers\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = rand(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.random.rand(2,2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = rand(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Normal random numbers\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = randn(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = np.random.randn(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = randn(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Manipulating Vectors and
+Matrices}\label{manipulating-vectors-and-matrices}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Transpose\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A.'
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A.T
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A.'
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Complex conjugate transpose\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A'
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A.conj()
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A'
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Concatenate horizontally\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = [[1 2] [1 2]]
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}[language=Matlab]
+A = horzcat([1 2], [1 2])
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+B = np.array([1, 2])
+A = np.hstack((B, B))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = [[1 2] [1 2]]
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+A = hcat([1 2], [1 2])
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Concatenate vertically\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = [[1 2]; [1 2]]
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}[language=Matlab]
+A = vertcat([1 2], [1 2])
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+B = np.array([1, 2])
+A = np.vstack((B, B))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = [[1 2]; [1 2]]
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+A = vcat([1 2], [1 2])
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Reshape (to 5 rows, 2 columns)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A = reshape(1:10, 5, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = A.reshape(5,2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A = reshape(1:10, 5, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Convert matrix to vector\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A(:)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A = A.flatten()
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A[:]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Flip left/right\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+fliplr(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.fliplr(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+flipdim(A, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Flip up/down\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+flipud(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.flipud(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+flipdim(A, 1)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Repeat matrix (3 times in the row dimension, 4 times in the column
+dimension)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+repmat(A, 3, 4)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.tile(A, (4, 3))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+repmat(A, 3, 4)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Accessing Vector/Matrix
+Elements}\label{accessing-vectormatrix-elements}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Access one element\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A(2, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A[1, 1]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A[2, 2]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Access specific rows\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A(1:4, :)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A[0:4, :]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A[1:4, :]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Access specific columns\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A(:, 1:4)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A[:, 0:4]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A[:, 1:4]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Remove a row\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A([1 2 4], :)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A[[0, 1, 3], :]
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A[[1, 2, 4], :]
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Diagonals of matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+diag(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.diag(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+diag(A)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Get dimensions of matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+[nrow ncol] = size(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+nrow, ncol = np.shape(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+nrow, ncol = size(A)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Mathematical Operations}\label{mathematical-operations}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Dot product\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+dot(A, B)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.dot(A, B) or A @ B
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+dot(A, B)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Matrix multiplication\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A * B
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A @ B
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A * B
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Element-wise multiplication\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A .* B
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A * B
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A .* B
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Matrix to a power\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A^2
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.linalg.matrix_power(A, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A^2
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Matrix to a power, elementwise\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A.^2
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+A**2
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A.^2
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Inverse\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+inv(A)
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}[language=Matlab]
+A^(-1)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.linalg.inv(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+inv(A)
+\end{lstlisting}
+
+or
+
+\begin{lstlisting}
+A^(-1)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Determinant\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+det(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.linalg.det(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+det(A)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Eigenvalues and eigenvectors\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+[vec, val] = eig(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+val, vec = np.linalg.eig(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+val, vec = eig(A)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Euclidean norm\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+norm(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.linalg.norm(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+norm(A)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Solve linear system \(Ax=b\) (when \(A\) is square)\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A\b
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.linalg.solve(A, b)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A\b
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Solve least squares problem \(Ax=b\) (when \(A\) is rectangular)\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+A\b
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.linalg.lstsq(A, b)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+A\b
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Sum / max / min}\label{sum-max-min}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Sum / max / min of each column\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+sum(A, 1)
+max(A, [], 1)
+min(A, [], 1)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+sum(A, 0)
+np.amax(A, 0)
+np.amin(A, 0)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+sum(A, 1)
+maximum(A, 1)
+minimum(A, 1)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Sum / max / min of each row\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+sum(A, 2)
+max(A, [], 2)
+min(A, [], 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+sum(A, 1)
+np.amax(A, 1)
+np.amin(A, 1)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+sum(A, 2)
+maximum(A, 2)
+minimum(A, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Sum / max / min of entire matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+sum(A(:))
+max(A(:))
+min(A(:))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.sum(A)
+np.amax(A)
+np.amin(A)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+sum(A)
+maximum(A)
+minimum(A)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Cumulative sum / max / min by row\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+cumsum(A, 1)
+cummax(A, 1)
+cummin(A, 1)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.cumsum(A, 0)
+np.maximum.accumulate(A, 0)
+np.minimum.accumulate(A, 0)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+cumsum(A, 1)
+cummax(A, 1)
+cummin(A, 1)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Cumulative sum / max / min by column\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+cumsum(A, 2)
+cummax(A, 2)
+cummin(A, 2)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+np.cumsum(A, 1)
+np.maximum.accumulate(A, 1)
+np.minimum.accumulate(A, 1)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{lstlisting}
+cumsum(A, 2)
+cummax(A, 2)
+cummin(A, 2)
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Programming}\label{programming}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Comment one line\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+% This is a comment
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+# This is a comment
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+# This is a comment
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Comment block\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+%{
+Comment block
+%}
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+# Block
+# comment
+# following PEP8
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+#=
+Comment block
+=#
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+For loop\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+for i = 1:N
+   % do something
+end
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+for i in range(n):
+    # do something
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+for i = 1:N
+   # do something
+end
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+While loop\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+while i <= N
+   % do something
+end
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+while i <= N:
+    # do something
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+while i <= N
+   # do something
+end
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+If\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+if i <= N
+   % do something
+end
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+if i <= N:
+   # do something
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+if i <= N
+   # do something
+end
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+If / else\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+if i <= N
+   % do something
+else
+   % do something else
+end
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+if i <= N:
+    # do something
+else:
+    # so something else
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+if i <= N
+   # do something
+else
+   # do something else
+end
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Print text and variable\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+x = 10
+fprintf('x = %d \n', x)
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+x = 10
+print('x = {}'.format(x))
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+x = 10
+println("x = $x")
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Function: one line/ anonymous\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+f = @(x) x^2
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+f = lambda x: x**2
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+f(x) = x^2
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Function: multiple lines\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Matlab]
+function out  = f(x)
+   out = x^2
+end
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{lstlisting}[language=Python]
+def f(x):
+    return x**2
+\end{lstlisting}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{lstlisting}
+function f(x)
+   return x^2
+end
+\end{lstlisting}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+In the Python code we assume that you have already run
+\lstinline!import numpy as np!
+
+\end{document}
