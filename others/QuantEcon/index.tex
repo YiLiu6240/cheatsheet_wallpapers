@@ -1,0 +1,1603 @@
+\documentclass[10pt, landscape]{article}
+\usepackage{geometry}
+\geometry{  % use 16:10 ratio, based on A4 dims, short edge is 210mm
+  landscape,
+  paperwidth=336mm,
+  paperheight=210mm,
+  top=.4in,left=.2in,right=.2in,bottom=.4in
+}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdftitle={Comparison cheatsheet},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+
+\usepackage{longtable,booktabs}
+
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\title{Comparison cheatsheet}
+\date{}
+
+\begin{document}
+\begin{multicols*}{2}
+% \maketitle
+
+\section{Creating Vectors}\label{creating-vectors}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.21\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.29\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Row vector: size (1, n)\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1} \FloatTok{2} \FloatTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]).reshape(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1} \FloatTok{2} \FloatTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Column vector: size (n, 1)\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1}\NormalTok{; }\FloatTok{2}\NormalTok{; }\FloatTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]).reshape(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1} \FloatTok{2} \FloatTok{3}\NormalTok{]'}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+1d array: size (n, )\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Not possible\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1}\NormalTok{; }\FloatTok{2}\NormalTok{; }\FloatTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1}\NormalTok{, }\FloatTok{2}\NormalTok{, }\FloatTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Integers from j to n with step size k\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = j:k:n}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.arange(j, n}\DecValTok{+1}\NormalTok{, k)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = j:k:n}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+Linearly spaced vector of k points\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = linspace(}\FloatTok{1}\NormalTok{, }\FloatTok{5}\NormalTok{, k)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.linspace(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, k)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = linspace(}\FloatTok{1}\NormalTok{, }\FloatTok{5}\NormalTok{, k)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Creating Matrices}\label{creating-matrices}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Create a matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1} \FloatTok{2}\NormalTok{; }\FloatTok{3} \FloatTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.array([[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{], [}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [}\FloatTok{1} \FloatTok{2}\NormalTok{; }\FloatTok{3} \FloatTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+2 x 2 matrix of zeros\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = zeros(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.zeros((}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = zeros(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+2 x 2 matrix of ones\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = ones(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.ones((}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = ones(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+2 x 2 identity matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = eye(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.eye(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = eye(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Diagonal matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = diag([}\FloatTok{1} \FloatTok{2} \FloatTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.diag([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = diagm([}\FloatTok{1}\NormalTok{; }\FloatTok{2}\NormalTok{; }\FloatTok{3}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Uniform random numbers\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = rand(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.random.rand(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = rand(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Normal random numbers\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = randn(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.random.randn(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = randn(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Manipulating Vectors and
+Matrices}\label{manipulating-vectors-and-matrices}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Transpose\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.'}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.T}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.'}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Complex conjugate transpose\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A'}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.conj()}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A'}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Concatenate horizontally\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [[}\FloatTok{1} \FloatTok{2}\NormalTok{] [}\FloatTok{1} \FloatTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = horzcat([}\FloatTok{1} \FloatTok{2}\NormalTok{], [}\FloatTok{1} \FloatTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OperatorTok{=} \NormalTok{np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{])}
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.hstack((B, B))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [[}\FloatTok{1} \FloatTok{2}\NormalTok{] [}\FloatTok{1} \FloatTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = hcat([}\FloatTok{1} \FloatTok{2}\NormalTok{], [}\FloatTok{1} \FloatTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Concatenate vertically\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [[}\FloatTok{1} \FloatTok{2}\NormalTok{]; [}\FloatTok{1} \FloatTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = vertcat([}\FloatTok{1} \FloatTok{2}\NormalTok{], [}\FloatTok{1} \FloatTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OperatorTok{=} \NormalTok{np.array([}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{])}
+\NormalTok{A }\OperatorTok{=} \NormalTok{np.vstack((B, B))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = [[}\FloatTok{1} \FloatTok{2}\NormalTok{]; [}\FloatTok{1} \FloatTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = vcat([}\FloatTok{1} \FloatTok{2}\NormalTok{], [}\FloatTok{1} \FloatTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Reshape (to 5 rows, 2 columns)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = reshape(}\FloatTok{1}\NormalTok{:}\FloatTok{10}\NormalTok{, }\FloatTok{5}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{A.reshape(}\DecValTok{5}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A = reshape(}\FloatTok{1}\NormalTok{:}\FloatTok{10}\NormalTok{, }\FloatTok{5}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Convert matrix to vector\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A(:)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{=} \NormalTok{A.flatten()}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[:]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Flip left/right\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fliplr(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.fliplr(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flipdim(A, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Flip up/down\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flipud(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.flipud(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flipdim(A, }\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+Repeat matrix (3 times in the row dimension, 4 times in the column
+dimension)\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{repmat(A, }\FloatTok{3}\NormalTok{, }\FloatTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.tile(A, (}\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{repmat(A, }\FloatTok{3}\NormalTok{, }\FloatTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Accessing Vector/Matrix
+Elements}\label{accessing-vectormatrix-elements}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Access one element\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A(}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\FloatTok{2}\NormalTok{, }\FloatTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Access specific rows\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A(}\FloatTok{1}\NormalTok{:}\FloatTok{4}\NormalTok{, :)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\DecValTok{0}\NormalTok{:}\DecValTok{4}\NormalTok{, :]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\FloatTok{1}\NormalTok{:}\FloatTok{4}\NormalTok{, :]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Access specific columns\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A(:, }\FloatTok{1}\NormalTok{:}\FloatTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[:, }\DecValTok{0}\NormalTok{:}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[:, }\FloatTok{1}\NormalTok{:}\FloatTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Remove a row\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A([}\FloatTok{1} \FloatTok{2} \FloatTok{4}\NormalTok{], :)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{], :]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[[}\FloatTok{1}\NormalTok{, }\FloatTok{2}\NormalTok{, }\FloatTok{4}\NormalTok{], :]}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Diagonals of matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diag(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.diag(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{diag(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Get dimensions of matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[nrow ncol] = size(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nrow, ncol }\OperatorTok{=} \NormalTok{np.shape(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nrow, ncol = size(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Mathematical Operations}\label{mathematical-operations}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Dot product\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dot(A, B)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.dot(A, B) }\OperatorTok{or} \NormalTok{A @ B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dot(A, B)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Matrix multiplication\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A * B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A @ B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A * B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Element-wise multiplication\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A .* B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OperatorTok{*} \NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A .* B}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Matrix to a power\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A^}\FloatTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.linalg.matrix_power(A, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A^}\FloatTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Matrix to a power, elementwise\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.^}\FloatTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}\OperatorTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A.^}\FloatTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Inverse\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inv(A)}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A^(-}\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.linalg.inv(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inv(A)}
+\end{Highlighting}
+\end{Shaded}
+
+or
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A^(-}\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Determinant\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{det(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.linalg.det(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{det(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Eigenvalues and eigenvectors\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[vec, val] = eig(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{val, vec }\OperatorTok{=} \NormalTok{np.linalg.eig(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{val, vec = eig(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Euclidean norm\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{norm(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.linalg.norm(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{norm(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Solve linear system \(Ax=b\) (when \(A\) is square)\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\textbackslash{}b}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.linalg.solve(A, b)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\textbackslash{}b}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Solve least squares problem \(Ax=b\) (when \(A\) is rectangular)\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\textbackslash{}b}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.linalg.lstsq(A, b)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\textbackslash{}b}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Sum / max / min}\label{sum-max-min}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Sum / max / min of each column\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{max(A, [], }\FloatTok{1}\NormalTok{)}
+\NormalTok{min(A, [], }\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{sum}\NormalTok{(A, }\DecValTok{0}\NormalTok{)}
+\NormalTok{np.amax(A, }\DecValTok{0}\NormalTok{)}
+\NormalTok{np.amin(A, }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{maximum(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{minimum(A, }\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Sum / max / min of each row\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{max(A, [], }\FloatTok{2}\NormalTok{)}
+\NormalTok{min(A, [], }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{sum}\NormalTok{(A, }\DecValTok{1}\NormalTok{)}
+\NormalTok{np.amax(A, }\DecValTok{1}\NormalTok{)}
+\NormalTok{np.amin(A, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{maximum(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{minimum(A, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Sum / max / min of entire matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum(A(:))}
+\NormalTok{max(A(:))}
+\NormalTok{min(A(:))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.}\BuiltInTok{sum}\NormalTok{(A)}
+\NormalTok{np.amax(A)}
+\NormalTok{np.amin(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum(A)}
+\NormalTok{maximum(A)}
+\NormalTok{minimum(A)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Cumulative sum / max / min by row\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cumsum(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{cummax(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{cummin(A, }\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.cumsum(A, }\DecValTok{0}\NormalTok{)}
+\NormalTok{np.maximum.accumulate(A, }\DecValTok{0}\NormalTok{)}
+\NormalTok{np.minimum.accumulate(A, }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cumsum(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{cummax(A, }\FloatTok{1}\NormalTok{)}
+\NormalTok{cummin(A, }\FloatTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+Cumulative sum / max / min by column\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cumsum(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{cummax(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{cummin(A, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.cumsum(A, }\DecValTok{1}\NormalTok{)}
+\NormalTok{np.maximum.accumulate(A, }\DecValTok{1}\NormalTok{)}
+\NormalTok{np.minimum.accumulate(A, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cumsum(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{cummax(A, }\FloatTok{2}\NormalTok{)}
+\NormalTok{cummin(A, }\FloatTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Programming}\label{programming}
+
+\begin{tabular}[ ]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
+Operation\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+MATLAB\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+Python\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+Julia\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Comment one line\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{% This is a comment}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# This is a comment}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# This is a comment}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Comment block\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{%\{}
+\NormalTok{Comment block}
+\CommentTok{%\}}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Block}
+\CommentTok{# comment}
+\CommentTok{# following PEP8}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#=}
+\NormalTok{Comment block}
+\NormalTok{=}\CommentTok{#}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+For loop\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{for i = }\FloatTok{1}\NormalTok{:N}
+   \CommentTok{% do something}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for} \NormalTok{i }\OperatorTok{in} \BuiltInTok{range}\NormalTok{(n):}
+    \CommentTok{# do something}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{for} \NormalTok{i = }\FloatTok{1}\NormalTok{:N}
+   \CommentTok{# do something}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+While loop\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{while i <= N}
+   \CommentTok{% do something}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{while} \NormalTok{i }\OperatorTok{<=} \NormalTok{N:}
+    \CommentTok{# do something}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{while} \NormalTok{i <= N}
+   \CommentTok{# do something}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+If\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{if i <= N}
+   \CommentTok{% do something}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if} \NormalTok{i }\OperatorTok{<=} \NormalTok{N:}
+   \CommentTok{# do something}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{if} \NormalTok{i <= N}
+   \CommentTok{# do something}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+If / else\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{if i <= N}
+   \CommentTok{% do something}
+\NormalTok{else}
+   \CommentTok{% do something else}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if} \NormalTok{i }\OperatorTok{<=} \NormalTok{N:}
+    \CommentTok{# do something}
+\ControlFlowTok{else}\NormalTok{:}
+    \CommentTok{# so something else}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{if} \NormalTok{i <= N}
+   \CommentTok{# do something}
+\KeywordTok{else}
+   \CommentTok{# do something else}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Print text and variable\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x = }\FloatTok{10}
+\NormalTok{fprintf(}\StringTok{'x = %d \textbackslash{}n'}\NormalTok{, x)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OperatorTok{=} \DecValTok{10}
+\BuiltInTok{print}\NormalTok{(}\StringTok{'x = \{\}'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x = }\FloatTok{10}
+\NormalTok{println(}\StringTok{"x = $x"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Function: one line/ anonymous\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f = @(x) x^}\FloatTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OperatorTok{=} \KeywordTok{lambda} \NormalTok{x: x}\OperatorTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f(x) = x^}\FloatTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
+Function: multiple lines\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{function out  = f(x)}
+   \NormalTok{out = x^}\FloatTok{2}
+\NormalTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def} \NormalTok{f(x):}
+    \ControlFlowTok{return} \NormalTok{x}\OperatorTok{**}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{function} \NormalTok{f(x)}
+   \KeywordTok{return} \NormalTok{x^}\FloatTok{2}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+In the Python code we assume that you have already run
+\texttt{import\ numpy\ as\ np}
+
+\end{multicols*}
+\end{document}
