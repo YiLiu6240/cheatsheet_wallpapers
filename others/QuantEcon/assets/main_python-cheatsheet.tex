@@ -1,28 +1,28 @@
 \title{QuantEcon -- Python Cheatsheet}
 
-\section{Functions}\label{functions}
+\section{Functions -- Part 1}\label{functions_pt1}
 
 \begin{tabular}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
-Command\strut
-\end{minipage} & \begin{minipage}[b]{0.77\columnwidth}\raggedright\strut
-Description\strut
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.77\columnwidth}\raggedright
+Description
 \end{minipage}\tabularnewline
 \midrule
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!*!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
-multiplication operation: \lstinline!2*3! returns \lstinline!6!\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!*!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
+multiplication operation: \lstinline!2*3! returns \lstinline!6!
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!**!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
-power operation: \lstinline!2**3! returns \lstinline!8!\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!**!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
+power operation: \lstinline!2**3! returns \lstinline!8!
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!@!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!@!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 matrix multiplication:
 
 \begin{lstlisting}[language=Python]
@@ -37,11 +37,11 @@ returns
 \begin{lstlisting}[language=Python]
 array([[10]])
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!lambda!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!lambda!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 Used for create anonymous one line functions of the form:
 
 \begin{lstlisting}[language=Python]
@@ -49,11 +49,11 @@ f = lambda x,y: 5*x+y
 \end{lstlisting}
 
 The code after the lambda but before variables specifies the parameters.
-The code after the colon tells python what object to return.\strut
+The code after the colon tells python what object to return.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!def!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!def!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 The def command is used to create functions of more than one line:
 
 \begin{lstlisting}[language=Python]
@@ -69,11 +69,11 @@ The code immediately following \lstinline!def! names the function, in
 this example \lstinline!g! . The variables in the parenthesis are the
 parameters of the function. The remaining lines of the function are
 denoted by tab indents. The return statement specifies the object to be
-returned.\strut
+returned.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!len(iterable)!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!len(iterable)!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 \lstinline!len! is a function that takes an iterable, such as a list,
 tuple or numpy array and returns the number of items in that object. For
 a numpy array, \lstinline!len! returns the length of the outermost
@@ -83,24 +83,40 @@ dimension
 len(np.zeros((5,4)))
 \end{lstlisting}
 
-returns \lstinline!5!.\strut
+returns \lstinline!5!.
+
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!l = [a1,a2,...,an]!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\bottomrule
+\end{tabular}
+
+\section{Functions -- Part 2}\label{functions_pt2}
+
+\begin{tabular}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.77\columnwidth}\raggedright
+Description
+\end{minipage}\tabularnewline
+\midrule
+
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!l = [a1,a2,...,an]!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 Constructs a list containing the objects \(a1,a2,...,an\). You can
 append to the list using \lstinline!l.append()!. The \(ith\) element of
-\(l\) can be accessed using \lstinline!l[i]!\strut
+\(l\) can be accessed using \lstinline!l[i]!
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!t =(a1,a2,...,an)!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!t =(a1,a2,...,an)!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 Constructs a tuple containing the objects \(a1,a2,...,an\). The \(ith\)
-element of \(t\) can be accessed using \lstinline!t[i]!\strut
+element of \(t\) can be accessed using \lstinline!t[i]!
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!for a in iterable:!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!for a in iterable:!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 For loop used to perform a sequence of commands (denoted using tabs) for
 each element in an iterable object such as a list, tuple, or numpy
 array. An example code is
@@ -112,11 +128,11 @@ for i in [1,2,3]:
 print(l)
 \end{lstlisting}
 
-prints \lstinline![1,4,9]!\strut
+prints \lstinline![1,4,9]!
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!if condition:!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!if condition:!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 Performs code if a condition is met (using tabs). For example
 
 \begin{lstlisting}[language=Python]
@@ -126,11 +142,39 @@ else:
     x = x**3
 \end{lstlisting}
 
-squares \(x\) if \(x\) is \(5\), otherwise cubes it.\strut
+squares \(x\) if \(x\) is \(5\), otherwise cubes it.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!plt.plot(x,y,s =None)!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!zip!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
+Make an iterator that aggregates elements from each of the iterables.
+
+\begin{lstlisting}[language=Python]
+x = [1, 2, 3]
+y = [4, 5, 6]
+zipped = zip(x, y)
+list(zipped)
+\end{lstlisting}
+
+returns \lstinline![(1, 4), (2, 5), (3, 6)]!
+\end{minipage}\tabularnewline
+\bottomrule
+\end{tabular}
+
+\section{Functions -- Part 3}\label{functions_pt3}
+
+\begin{tabular}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.77\columnwidth}\raggedright
+Description
+\end{minipage}\tabularnewline
+\midrule
+
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\lstinline!plt.plot(x,y,s =None)!
+\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright
 The plot command is included in \lstinline!matplotlib.pyplot!. The plot
 command is used to plot \(x\) versus \(y\) where \(x\) and \(y\) are
 iterables of the same length. By default the plot command draws a line,
@@ -153,38 +197,24 @@ plt.savefig('tom_test.eps')
 \end{lstlisting}
 
 plots the cosine function on the domain (0,10) with a green line with
-circles at the points \(x,v\)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
-\lstinline!zip!\strut
-\end{minipage} & \begin{minipage}[t]{0.77\columnwidth}\raggedright\strut
-Make an iterator that aggregates elements from each of the iterables.
-
-\begin{lstlisting}[language=Python]
-x = [1, 2, 3]
-y = [4, 5, 6]
-zipped = zip(x, y)
-list(zipped)
-\end{lstlisting}
-
-returns \lstinline![(1, 4), (2, 5), (3, 6)]!\strut
+circles at the points \(x,v\)
 \end{minipage}\tabularnewline
 \bottomrule
 \end{tabular}
 
-\section{Numpy Arrays}\label{numpy-arrays}
+\section{Numpy Arrays -- Part 1}\label{numpy-arrays_pt1}
 
 \begin{tabular}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
-Command\strut
-\end{minipage} & \begin{minipage}[b]{0.72\columnwidth}\raggedright\strut
-Description\strut
+\begin{minipage}[b]{0.22\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.72\columnwidth}\raggedright
+Description
 \end{minipage}\tabularnewline
 \midrule
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.array(object,dtype = None)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.array(object,dtype = None)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 \lstinline!np.array! constructs a numpy array from an object, such as a
 list or a list of lists. \lstinline!dtype! allows you to specify the
 type of object the array is holding. You will generally note need to
@@ -195,11 +225,11 @@ np.array([1, 2, 3]) #creates 1 dim array of ints
 np.array( [1,2,3.0] )#creates 1 dim array of floats
 np.array( [ [1,2],[3,4] ]) #creates a 2 dim array
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!A[i1,i2,...,in]!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!A[i1,i2,...,in]!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Access a the element in numpy array A in with index i1 in dimension 1,
 i2 in dimension 2, etc. Can use \lstinline!:! to access a range of
 indices, where \lstinline!imin:imax! represents all \(i\) such that
@@ -213,11 +243,11 @@ and
 
 \lstinline!A[0:2,:]!
 
-returns the 0th and 1st rows in a 2 dimensional array.\strut
+returns the 0th and 1st rows in a 2 dimensional array.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.zeros(shape)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.zeros(shape)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Constructs numpy array of shape shape. Here shape is an integer of
 sequence of integers. Such as 3, (1,2),(2,1), or (5,5). Thus
 
@@ -227,16 +257,16 @@ Constructs an \(5\times 5\) array while
 
 \lstinline!np.zeros(5,5)!
 
-will throw an error.\strut
+will throw an error.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.ones(shape)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-Same as \lstinline!np.zeros! but produces an array of ones\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.ones(shape)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
+Same as \lstinline!np.zeros! but produces an array of ones
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.linspace(a,b,n)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.linspace(a,b,n)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Returns a numpy array with \(n\) linearly spaced points between \(a\)
 and \(b\). For example
 
@@ -249,22 +279,36 @@ array([ 1.        ,  1.11111111,  1.22222222,  1.33333333,
 1.44444444, 1.55555556,  1.66666667,  1.77777778,
 1.88888889,  2.        ])
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.eye(N)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.eye(N)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Constructs the identity matrix of size \(N\). For example
 
 \lstinline!np.eye(3)!
 
 returns the \(3\times 3\) identity matrix:
 
-\[\left(\begin{matrix}1&0&0\\0&1&0\\ 0&0&1\end{matrix}\right)\]\strut
+\[\left(\begin{matrix}1&0&0\\0&1&0\\ 0&0&1\end{matrix}\right)\]
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.diag(a)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\bottomrule
+\end{tabular}
+
+\section{Numpy Arrays -- Part 2}\label{numpy-arrays_pt2}
+
+\begin{tabular}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.72\columnwidth}\raggedright
+Description
+\end{minipage}\tabularnewline
+\midrule
+
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.diag(a)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 \lstinline!np.diag! has 2 uses. First if \lstinline!a! is a 2
 dimensional array then \lstinline!np.diag! returns the principle
 diagonal of the matrix. Thus
@@ -280,11 +324,11 @@ array with \$a\$ as the principle diagonal. Thus,
 
 returns
 
-\[\left(\begin{matrix}1&0\\0&2\end{matrix}\right)\]\strut
+\[\left(\begin{matrix}1&0\\0&2\end{matrix}\right)\]
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.random.rand(d0, d1, ..., dn)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.random.rand(d0, d1, ..., dn)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Constructs a numpy array of shape \lstinline!(d0,d1,...,dn)! filled with
 random numbers drawn from a uniform distribution between :math`(0,1).
 For example, :python:np.random.rand(2,3)` returns
@@ -293,26 +337,81 @@ For example, :python:np.random.rand(2,3)` returns
 array([[ 0.69060674,  0.38943021,  0.19128955],
 [ 0.5419038 ,  0.66963507,  0.78687237]])
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.random.randn(d0, d1, ..., dn)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.random.randn(d0, d1, ..., dn)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Same as \lstinline!np.random.rand(d0, d1, ..., dn)! except that it draws
 from the standard normal distribution \(\mathcal N(0,1)\) rather than
-the uniform distribution.\strut
+the uniform distribution.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!A.T!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!A.T!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Reverses the dimensions of an array (transpose). For example, if
 \(x = \left(\begin{matrix} 1& 2\\3&4\end{matrix}\right)\) then
 \lstinline!x.T! returns
-\(\left(\begin{matrix} 1& 3\\2&4\end{matrix}\right)\)\strut
+\(\left(\begin{matrix} 1& 3\\2&4\end{matrix}\right)\)
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.hstack(tuple)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.amax(a, axis = None)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
+By default \lstinline!np.amax(a)! finds the maximum of all elements in
+the array \(a\). Can specify maximization along a particular dimension
+with axis. If
+
+\lstinline!a = np.array( [ [2,1], [3,4] ]) #creates a 2 dim array!
+
+then
+
+\lstinline!np.amax(a,axis = 0) #maximization along row (dim 0)!
+
+returns \lstinline!array([3,4])! and
+
+\lstinline!np.amax(a, axis = 1) #maximization along column (dim 1)!
+
+returns \lstinline!array([2,4])!
+\end{minipage}\tabularnewline
+
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.argmax(a, axis = None)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
+Performs similar function to np.amax except returns index of maximal
+element. By default gives index of flattened array, otherwise can use
+axis to specify dimension. From the example for np.amax
+
+\begin{lstlisting}[language=Python]
+np.amax(a,axis = 0) #maximization along row (dim 0)
+\end{lstlisting}
+
+returns \lstinline!array([1,1])! and
+
+\begin{lstlisting}[language=Python]
+np.amax(a, axis = 1) #maximization along column (dim 1)
+\end{lstlisting}
+
+returns \lstinline!array([0,1])!
+\end{minipage}\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+
+\section{Numpy Arrays -- Part 3}\label{numpy-arrays_pt3}
+
+\begin{tabular}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.72\columnwidth}\raggedright
+Description
+\end{minipage}\tabularnewline
+\midrule
+
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.hstack(tuple)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Take a sequence of arrays and stack them horizontally to make a single
 array. For example
 
@@ -331,11 +430,11 @@ np.hstack((a,b))
 \end{lstlisting}
 
 returns
-\(\left( \begin{matrix} 1&2\\2&3\\ 3&4 \end{matrix}\right)\)\strut
+\(\left( \begin{matrix} 1&2\\2&3\\ 3&4 \end{matrix}\right)\)
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.vstack(tuple)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.vstack(tuple)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Like \lstinline!np.hstack!. Takes a sequence of arrays and stack them
 vertically to make a single array. For example
 
@@ -351,65 +450,19 @@ returns
 array( [ [1,2,3],
 [2,3,4] ] )
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.amax(a, axis = None)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-By default \lstinline!np.amax(a)! finds the maximum of all elements in
-the array \(a\). Can specify maximization along a particular dimension
-with axis. If
 
-\lstinline!a = np.array( [ [2,1], [3,4] ]) #creates a 2 dim array!
-
-then
-
-\lstinline!np.amax(a,axis = 0) #maximization along row (dim 0)!
-
-returns \lstinline!array([3,4])! and
-
-\lstinline!np.amax(a, axis = 1) #maximization along column (dim 1)!
-
-returns \lstinline!array([2,4])!\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.amin(a, axis = None)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-Same as \lstinline!np.amax! except returns minimum element.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.argmax(a, axis = None)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-Performs similar function to np.amax except returns index of maximal
-element. By default gives index of flattened array, otherwise can use
-axis to specify dimension. From the example for np.amax
-
-\begin{lstlisting}[language=Python]
-np.amax(a,axis = 0) #maximization along row (dim 0)
-\end{lstlisting}
-
-returns \lstinline!array([1,1])! and
-
-\begin{lstlisting}[language=Python]
-np.amax(a, axis = 1) #maximization along column (dim 1)
-\end{lstlisting}
-
-returns \lstinline!array([0,1])!\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.argmin(a, axis =None)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-Same as \lstinline!np.argmax! except finds minimal index.\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\lstinline!np.dot(a,b)! or \lstinline!a.dot(b)!\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\lstinline!np.dot(a,b)! or \lstinline!a.dot(b)!
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright
 Returns an array equal to the dot product of \(a\) and \(b\). For this
 operation to work the innermost dimension of \(a\) must be equal to the
 outermost dimension of \(b\). If \(a\) is a \((3,2)\) array and \(b\) is
 a \((2)\) array then \lstinline!np.dot(a,b)! is valid. If \(b\) is a
-\((1,2)\) array then the operation will return an error.\strut
+\((1,2)\) array then the operation will return an error.
 \end{minipage}\tabularnewline
+
 \bottomrule
 \end{tabular}
 
@@ -417,15 +470,15 @@ a \((2)\) array then \lstinline!np.dot(a,b)! is valid. If \(b\) is a
 
 \begin{tabular}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
-Command\strut
-\end{minipage} & \begin{minipage}[b]{0.75\columnwidth}\raggedright\strut
-Description\strut
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.75\columnwidth}\raggedright
+Description
 \end{minipage}\tabularnewline
 \midrule
-\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-\lstinline!np.linalg.inv(A)!\strut
-\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\lstinline!np.linalg.inv(A)!
+\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright
 For a 2-dimensional array \(A\). \lstinline!np.linalg.inv! returns the
 inverse of \(A\). For example, for a \((2,2)\) array \(A\)
 
@@ -439,11 +492,11 @@ returns
 np.array( [1,0],
 [0,1] ])
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-\lstinline!np.linalg.eig(A)!\strut
-\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\lstinline!np.linalg.eig(A)!
+\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright
 Returns a 1-dimensional array with all the eigenvalues of \$A\$ as well
 as a 2-dimensional array with the eigenvectors as columns. For example,
 
@@ -451,11 +504,11 @@ as a 2-dimensional array with the eigenvectors as columns. For example,
 
 returns the eigenvalues in \lstinline!eigvals! and the eigenvectors in
 \lstinline!eigvecs!. \lstinline!eigvecs[:,i]! is the eigenvector of
-\(A\) with eigenvalue of \lstinline!eigval[i]!.\strut
+\(A\) with eigenvalue of \lstinline!eigval[i]!.
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-\lstinline!np.linalg.solve(A,b)!\strut
-\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\lstinline!np.linalg.solve(A,b)!
+\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright
 Constructs array \(x\) such that \lstinline!A.dot(x)! is equal to \(b\).
 Theoretically should give the same answer as
 
@@ -464,7 +517,7 @@ Ainv = np.linalg.inv(A)
 x = Ainv.dot(b)
 \end{lstlisting}
 
-but numerically more stable.\strut
+but numerically more stable.
 \end{minipage}\tabularnewline
 \bottomrule
 \end{tabular}
@@ -473,26 +526,26 @@ but numerically more stable.\strut
 
 \begin{tabular}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.14\columnwidth}\raggedright\strut
-Command\strut
-\end{minipage} & \begin{minipage}[b]{0.80\columnwidth}\raggedright\strut
-Description\strut
+\begin{minipage}[b]{0.14\columnwidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{0.80\columnwidth}\raggedright
+Description
 \end{minipage}\tabularnewline
 \midrule
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
-pd.Series()\strut
-\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+pd.Series()
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright
 Constructs a Pandas Series Object from some specified data and/or index
 
 \begin{lstlisting}[language=Python]
 s1 = pd.Series([1,2,3])
 s2 = pd.Series([1,2,3], index=['a','b','c'])
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
-pd.DataFrame()\strut
-\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.14\columnwidth}\raggedright
+pd.DataFrame()
+\end{minipage} & \begin{minipage}[t]{0.80\columnwidth}\raggedright
 Constructs a Pandas DataFrame object from some specified data and/or
 index, column names etc.
 
@@ -508,7 +561,7 @@ a = [1,2,3]
 b = [4,5,6]
 df = pd.DataFrame(list(zip(a,b)), columns=['a','b'])
 \end{lstlisting}
-\strut
+
 \end{minipage}\tabularnewline
 \bottomrule
 \end{tabular}
