@@ -9,40 +9,38 @@ OUTPUT1 = $(OUTPUT_DIR)/$(TARGET1).png
 OUTPUT2 = $(OUTPUT_DIR)/$(TARGET2).png
 OUTPUT3 = $(OUTPUT_DIR)/$(TARGET3).png
 
-DENSITY = 150
-COLOR = +level-colors "\#ebdbb2","\#1d2021" -background "\#282828"
+QUALITY = -density 200 -quality 100
+COLOR = -colorspace Gray \
+	+level-colors "\#ebdbb2","\#1d2021" -background "\#282828" \
+	-alpha remove
 
-all: $(OUTPUT1) $(OUTPUT2) $(OUTPUT3)
+wallpaper: $(OUTPUT1) $(OUTPUT2) $(OUTPUT3)
+
+all: wallpaper install
 
 clean::
-	rm -rf $(OUTPUT_DIR)
+	@rm -rf $(OUTPUT_DIR)
 
 install::
-	mv $(OUTPUT_DIR)/*.png $(DEST_DIR)
+	@mv $(OUTPUT_DIR)/*.png $(DEST_DIR)
 
 $(OUTPUT1):
-	mkdir -p output
-	convert $(TARGET1).pdf \
-		-density $(DENSITY) \
-		-colorspace Gray \
+	@mkdir -p output
+	@convert $(TARGET1).pdf \
 		$(COLOR) \
-		-alpha remove \
+		$(QUALITY) \
 		$(OUTPUT1)
 
 $(OUTPUT2):
-	mkdir -p output
-	convert $(TARGET1).pdf \
-		-density $(DENSITY) \
-		-colorspace Gray \
+	@mkdir -p output
+	@convert $(TARGET1).pdf \
 		$(COLOR) \
-		-alpha remove \
+		$(QUALITY) \
 		$(OUTPUT2)
 
 $(OUTPUT3):
-	mkdir -p output
-	convert $(TARGET1).pdf \
-		-density $(DENSITY) \
-		-colorspace Gray \
+	@mkdir -p output
+	@convert $(TARGET1).pdf \
 		$(COLOR) \
-		-alpha remove \
+		$(QUALITY) \
 		$(OUTPUT3)
