@@ -33,14 +33,14 @@ $(OUTPUT1):
 
 $(OUTPUT2):
 	@mkdir -p output
-	@convert $(TARGET1).pdf \
+	@convert $(TARGET2).pdf \
 		$(COLOR) \
 		$(QUALITY) \
 		$(OUTPUT2)
 
 $(OUTPUT3):
 	@mkdir -p output
-	@convert $(TARGET1).pdf \
+	@convert $(TARGET3).pdf \
 		$(COLOR) \
 		$(QUALITY) \
 		$(OUTPUT3)
