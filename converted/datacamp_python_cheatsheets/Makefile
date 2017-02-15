@@ -13,10 +13,11 @@ OUTPUT3 = $(OUTPUT_DIR)/$(TARGET3).png
 OUTPUT4 = $(OUTPUT_DIR)/$(TARGET4).png
 OUTPUT5 = $(OUTPUT_DIR)/$(TARGET5).png
 
-QUALITY = -density 200 -quality 100
+ARGS1 = -verbose -density 300
 COLOR = -colorspace Gray \
 	+level-colors "\#ebdbb2","\#1d2021" -background "\#282828" \
 	-alpha remove
+ARGS2 = -quality 100 $(COLOR)
 
 ALLFILES = $(OUTPUT1) $(OUTPUT2) $(OUTPUT3) $(OUTPUT4) $(OUTPUT5)
 
@@ -32,35 +33,20 @@ install::
 
 $(OUTPUT1):
 	mkdir -p output
-	convert $(TARGET1).pdf \
-		$(COLOR) \
-		$(QUALITY) \
-		$(OUTPUT1)
+	convert $(ARGS1) $(TARGET1).pdf $(ARGS2) $(OUTPUT1)
 
 $(OUTPUT2):
 	mkdir -p output
-	convert $(TARGET2).pdf \
-		$(COLOR) \
-		$(QUALITY) \
-		$(OUTPUT2)
+	convert $(ARGS1) $(TARGET2).pdf $(ARGS2) $(OUTPUT2)
 
 $(OUTPUT3):
 	mkdir -p output
-	convert $(TARGET3).pdf \
-		$(COLOR) \
-		$(QUALITY) \
-		$(OUTPUT3)
+	convert $(ARGS1) $(TARGET3).pdf $(ARGS2) $(OUTPUT3)
 
 $(OUTPUT4):
 	mkdir -p output
-	convert $(TARGET4).pdf \
-		$(COLOR) \
-		$(QUALITY) \
-		$(OUTPUT4)
+	convert $(ARGS1) $(TARGET4).pdf $(ARGS2) $(OUTPUT4)
 
 $(OUTPUT5):
 	mkdir -p output
-	convert $(TARGET5).pdf \
-		$(COLOR) \
-		$(QUALITY) \
-		$(OUTPUT5)
+	convert $(ARGS1) $(TARGET5).pdf $(ARGS2) $(OUTPUT5)
