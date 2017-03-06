@@ -11,6 +11,32 @@ Conventions:
 - sources of the source/material/asset files are usually listed in `SOURCE`
 - original documents (e.g. `README.md`, `Makefile`) are renamed with a `_orig` suffix.
 
+Structure:
+
+- [compiled_by_self](compiled_by_self)
+    - [awesomewm](awesomewm)
+    - [dired](dired)
+    - [git_switches](git_switches)
+    - [git_workflows](git_workflows)
+    - [preamble](preamble)
+- [compiled_by_others](compiled_by_others)
+    - [QuantEcon](QuantEcon)
+    - [pdb-cheatsheet](pdb-cheatsheet)
+    - [probability](probability)
+    - [scientific_python_cheat_sheet](scientific_python_cheat_sheet)
+- [converted](converted)
+    - [datacamp_python_cheatsheets](datacamp_python_cheatsheets)
+    - [emacs-refcards](emacs-refcards)
+    - [git_old](git_old)
+    - [latex](latex)
+    - [linearalgebra](linearalgebra)
+    - [org](org)
+    - [other_pics](other_pics)
+    - [python-pandas](python-pandas)
+    - [sklearn_ml_map](sklearn_ml_map)
+    - [vim](vim)
+    - [world-map](world-map)
+
 ## showcases
 
 ![sklearn_ml_map.png](examples/sklearn_ml_map.png)
