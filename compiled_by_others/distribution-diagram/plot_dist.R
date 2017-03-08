@@ -1,16 +1,18 @@
-# Coded by Rasmus Bååth  
+# Coded by Rasmus Bååth
 # rasmus.baath@lucs.lu.se
 # www.sumsar.net
 # If you modify the code, please keep this header. Thanks!
 
 
-plot_dist <- function(dist, labels=c(), scale = 1, color="skyblue", plot_dist_name=T) {
-  old_par <- par(mar = c(0.3, 0, 0, 0), xaxt='n', yaxt='n',ann=FALSE, bty="n", xpd=NA)  
+plot_dist <- function(dist, labels=c(), scale = 1,
+                      color="skyblue", legend_bg="#FFFFFF80",
+                      plot_dist_name=T) {
+  old_par <- par(mar = c(0.3, 0, 0, 0), xaxt='n', yaxt='n',ann=FALSE, bty="n", xpd=NA)
   x <- dist$x
   y <- do.call(dist$ddist, c(list(x=x), dist$ddist_params))
   # To always anchor the plot at zero and give some extra top space if neccecary.
   plot(c(x[1:2], x), c(0,  max(y) / (1- dist$top_space), y), type="l", col="transparent")
-  
+
   # only draw where the distribution is not zero
   points_to_NA <- filter(c(0, y, 0), filter=c(1,1, 1)) == 0
   points_to_NA <- points_to_NA[-c(1, length(points_to_NA))]
@@ -21,7 +23,7 @@ plot_dist <- function(dist, labels=c(), scale = 1, color="skyblue", plot_dist_na
     if(plot_dist_name) {
       legend(grconvertX(dist$name_pos[1], from="npc"), grconvertY(dist$name_pos[2], from="npc"),
              dist$name, cex=1.5 * scale, xjust=0.5, yjust=0.5, bty="o", box.lwd = 0, box.col="transparent",
-             bg=rgb(1,1, 1,0.5),x.intersp=-1, y.intersp=0 , text.col="transparent")
+             bg=legend_bg,x.intersp=-1, y.intersp=0 , text.col="transparent")
     }
   }
   if("line" %in% dist$plot_type) {
@@ -31,7 +33,7 @@ plot_dist <- function(dist, labels=c(), scale = 1, color="skyblue", plot_dist_na
   if(plot_dist_name) {
     text(grconvertX(dist$name_pos[1], from="npc"), grconvertY(dist$name_pos[2], from="npc"), dist$name, cex=1.5 * scale)
   }
-  
+
   if(is.character(names(labels))) {
     for(label_name in names(labels)) {
       xpos <- dist$labels[[label_name]][1]
@@ -60,12 +62,12 @@ dists <- list(
     plot_type = "line",
     # The values of the x-axis.
     x = seq(-3.3, 3.3, 0.01),
-    # If top_space = 0 the distribution extends to the top of the graph, if 
+    # If top_space = 0 the distribution extends to the top of the graph, if
     # 0 > top_space < 1 then that proportion of space is left at the top.
     top_space = 0,
     # The function defining the probability density function
     ddist = dnorm,
-    # The arguments given to the probability density function (has to be named) 
+    # The arguments given to the probability density function (has to be named)
     ddist_params = list(mean=0, sd=1),
     # Coordinates and names for the parameter labels
     labels = list(mean = c(0.5, 0.3), right_sd = c(0.80, 0.5), left_sd = c(0.20, 0.5))
@@ -108,7 +110,7 @@ dists <- list(
     top_space = 0,
     ddist = dt,
     ddist_params = list(ncp=0, df=3),
-    labels = list(mean = c(0.5, 0.3), right_scale = c(0.75, 0.65), left_scale = c(0.25, 0.65), 
+    labels = list(mean = c(0.5, 0.3), right_scale = c(0.75, 0.65), left_scale = c(0.25, 0.65),
                   right_df = c(0.90, 0.35), left_df = c(0.10, 0.35))
   ),
   uniform = list(
@@ -323,7 +325,7 @@ dists <- list(
     top_space = 0,
     ddist = function(x, mean, sd, right_limit) {ifelse(x < right_limit, dnorm(x, mean, sd), 0)},
     ddist_params = list(mean=0, sd=1, right_limit=1.75),
-    labels = list(mean = c(0.5, 0.45), right_sd = c(0.77, 0.60), right_limit=c(0.83,0.175), 
+    labels = list(mean = c(0.5, 0.45), right_sd = c(0.77, 0.60), right_limit=c(0.83,0.175),
                   left_sd = c(0.23, 0.60))
   ),
   left_censored_normal= list(
@@ -334,9 +336,9 @@ dists <- list(
     top_space = 0,
     ddist = function(x, mean, sd, left_limit) {ifelse(x > left_limit, dnorm(x, mean, sd), 0)},
     ddist_params = list(mean=0, sd=1, left_limit=-1.75),
-    labels = list(mean = c(0.5, 0.45), right_sd = c(0.77, 0.60), left_limit=c(0.17,0.175), 
+    labels = list(mean = c(0.5, 0.45), right_sd = c(0.77, 0.60), left_limit=c(0.17,0.175),
                   left_sd = c(0.23, 0.60))
-  ), 
+  ),
     cauchy = list(
     name = "Cauchy",
     name_pos = c(0.5, 0.1),
@@ -397,7 +399,7 @@ plot_dist_png <- function(dist, labels=c(), fname="", color="skyblue", plot_dist
   dev.off()
 }
 
-# Function that renders text as an image. Useful for constructing images of equations. 
+# Function that renders text as an image. Useful for constructing images of equations.
 # See ?plotmath for examples and documentation
 
 plot_text_svg <- function(expr, fname) {
